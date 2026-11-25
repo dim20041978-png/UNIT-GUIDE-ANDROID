@@ -33,6 +33,8 @@ jobs:
           python3 scripts/embed_catalog_photos.py /tmp/uti260b-flyer.pdf app/src/main/assets/index.html
           curl --fail --location --retry 3 --connect-timeout 15 --max-time 120 'https://storage.googleapis.com/uni-tdocuments/Thermal%20Camera%20User%20Manuals/UTi260B_User_Manual.pdf' -o /tmp/uti260b-manual.pdf
           python3 scripts/embed_menu_photos.py /tmp/uti260b-manual.pdf app/src/main/assets/index.html
+          python3 -m pip install --disable-pip-version-check 'Pillow==11.3.0'
+          python3 scripts/embed_field_photos.py docs/field-photos.json app/src/main/assets/index.html
           python3 -c "import pathlib,re; h=pathlib.Path('app/src/main/assets/index.html').read_text(); pathlib.Path('/tmp/guide-check.js').write_text(re.search(r'<script>(.*?)</script>',h,re.S).group(1))"
           node --check /tmp/guide-check.js
       - name: Visual browser smoke test

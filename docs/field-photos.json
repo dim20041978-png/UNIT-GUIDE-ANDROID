@@ -1,0 +1,112 @@
+[
+  {
+    "id": "e1",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Eaton_circuit_breaker_panel_closed.JPG",
+    "source": "https://commons.wikimedia.org/wiki/File:Eaton_circuit_breaker_panel_closed.JPG",
+    "author": "BrokenSphere",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "label": "Закритий електрощит Eaton. Зовнішній вигляд; температура внутрішніх контактів не визначена.",
+    "width": 1659,
+    "height": 2272
+  },
+  {
+    "id": "e2",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Electrical_fault.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Electrical_fault.jpg",
+    "author": "Hotflashhome",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "label": "Реальна термограма перегріву промислового блока запобіжників, не автоматичного вимикача. Значення не є універсальними порогами.",
+    "width": 382,
+    "height": 246
+  },
+  {
+    "id": "e3",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Schuko_plug_and_socket.png",
+    "source": "https://commons.wikimedia.org/wiki/File:Schuko_plug_and_socket.png",
+    "author": "Chameleon, bran, plugwash",
+    "license": "Public domain",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/File:Schuko_plug_and_socket.png",
+    "label": "Фотографії вилки та розетки Schuko. Не є знімком підтвердженого перегріву.",
+    "width": 800,
+    "height": 344
+  },
+  {
+    "id": "h1",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Termovizn%C3%AD_sn%C3%ADmek_rodinn%C3%A9ho_domu.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Termovizn%C3%AD_sn%C3%ADmek_rodinn%C3%A9ho_domu.jpg",
+    "author": "Radim.vesely",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "label": "Реальна термограма фасаду; за описом автора температура середовища 2 °C. Причину різниці температур необхідно підтверджувати.",
+    "width": 760,
+    "height": 480
+  },
+  {
+    "id": "h2",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Pont_thermique_thermographie_infrarouge_Briq_Formation.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Pont_thermique_thermographie_infrarouge_Briq_Formation.jpg",
+    "author": "Thibault LEMONNIER",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "label": "Термограма вертикального містка холоду на фасаді за описом автора. Камера HTI HT-18, не UTi260B.",
+    "width": 240,
+    "height": 320
+  },
+  {
+    "id": "h3",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Sprossenfenster_01.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Sprossenfenster_01.jpg",
+    "author": "TomAlt",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "label": "Звичайна фотографія дерев’яної віконної рами: приклад огляду стиків. Не термограма.",
+    "width": 1762,
+    "height": 2234
+  },
+  {
+    "id": "f1",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/79/Public_domain_image_-_underfloor_heating_installation.JPG",
+    "source": "https://commons.wikimedia.org/wiki/File:Public_domain_image_-_underfloor_heating_installation.JPG",
+    "author": "Kiwiev",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "label": "Реальна фотографія монтажу водяної теплої підлоги до укладання стяжки.",
+    "width": 5456,
+    "height": 3632
+  },
+  {
+    "id": "f2",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/1e/IR_Fussbodenheizung.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:IR_Fussbodenheizung.jpg",
+    "author": "Herbertweidner",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "label": "Реальна термограма теплої підлоги під плиткою, знята FLIR. Приклад неоднорідного рисунка; несправність або холодний контур не підтверджено.",
+    "width": 320,
+    "height": 240
+  },
+  {
+    "id": "r2",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Thermal_and_visual_image_showing_29_degree_C._temperature_differential.png",
+    "source": "https://commons.wikimedia.org/wiki/File:Thermal_and_visual_image_showing_29_degree_C._temperature_differential.png",
+    "author": "PeterBruce-Iri",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "label": "Приклад арифметики: 61 − 32 = 29 °C за описом автора. Рослинність і мульча — різні матеріали, тому це не діагностичний контроль однотипних деталей. Камера Seek Compact XR.",
+    "width": 2121,
+    "height": 1618
+  },
+  {
+    "id": "r3",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/96/CoffeeBrewerThermography_ty_20060920i1col0.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:CoffeeBrewerThermography_ty_20060920i1col0.jpg",
+    "author": "Torsten Henning",
+    "license": "Public domain",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/File:CoffeeBrewerThermography_ty_20060920i1col0.jpg",
+    "label": "Реальна пара теплового і видимого кадрів кавоварки — приклад комплектування звіту, не готовий акт. Температури орієнтовні: автор прийняв ε = 1.",
+    "width": 1472,
+    "height": 450
+  }
+]
