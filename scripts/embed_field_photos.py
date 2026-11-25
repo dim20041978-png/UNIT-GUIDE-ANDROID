@@ -24,11 +24,13 @@ for item in manifest:
         assert image.size==(item["width"],item["height"]), item["id"]
         fmt = image.format
         image.verify()
-    mime = {"JPEG":"image/jpeg","PNG":"image/png"}[fmt]
+    # MPO stores a primary JPEG plus auxiliary frames. Preserve the full original bytes.
+    # Browsers decode the primary JPEG image; report the detected container format.
+    mime = {"JPEG":"image/jpeg","MPO":"image/jpeg","PNG":"image/png"}[fmt]
     marker = "__FIELD_"+item["id"]+"__"
     assert html.count(marker)==1, marker
     html=html.replace(marker,"data:"+mime+";base64,"+base64.b64encode(raw).decode("ascii"))
-    report.append({"id":item["id"],"sha256":hashlib.sha256(raw).hexdigest(),"width":item["width"],"height":item["height"],"source":item["source"],"license":item["license"]})
+    report.append({"id":item["id"],"sha256":hashlib.sha256(raw).hexdigest(),"format":fmt,"width":item["width"],"height":item["height"],"source":item["source"],"license":item["license"]})
     print("Verified original image bytes:",item["id"],item["width"],item["height"])
     time.sleep(1)
 assert "__FIELD_" not in html
