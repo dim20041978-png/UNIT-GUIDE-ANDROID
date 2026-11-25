@@ -31,8 +31,21 @@ jobs:
           python3 -m pip install --disable-pip-version-check 'PyMuPDF==1.25.5'
           curl --fail --location --retry 3 --connect-timeout 15 --max-time 120 'https://damoatool02.cafe24.com/pdf//Uni-T/Product%20Flyer--UTi260B.pdf' -o /tmp/uti260b-flyer.pdf
           python3 scripts/embed_catalog_photos.py /tmp/uti260b-flyer.pdf app/src/main/assets/index.html
+          curl --fail --location --retry 3 --connect-timeout 15 --max-time 120 'https://storage.googleapis.com/uni-tdocuments/Thermal%20Camera%20User%20Manuals/UTi260B_User_Manual.pdf' -o /tmp/uti260b-manual.pdf
+          python3 scripts/embed_menu_photos.py /tmp/uti260b-manual.pdf app/src/main/assets/index.html
           python3 -c "import pathlib,re; h=pathlib.Path('app/src/main/assets/index.html').read_text(); pathlib.Path('/tmp/guide-check.js').write_text(re.search(r'<script>(.*?)</script>',h,re.S).group(1))"
           node --check /tmp/guide-check.js
+      - name: Visual browser smoke test
+        run: |
+          npm install --prefix /tmp/guide-test --no-audit --no-fund playwright@1.51.1
+          /tmp/guide-test/node_modules/.bin/playwright install --with-deps chromium
+          NODE_PATH=/tmp/guide-test/node_modules node scripts/check_guide.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: guide-visual-check
+          path: visual-check/
+          if-no-files-found: warn
       - name: Build debug APK and lint
         run: gradle --no-daemon assembleDebug lintDebug
       - name: Name APK
