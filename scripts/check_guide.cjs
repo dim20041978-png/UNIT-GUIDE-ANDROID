@@ -8,8 +8,8 @@ fs.mkdirSync(dir,{recursive:true});
 const browser=await chromium.launch({headless:true});
 const report=[];
 try{
- for(const width of [320,390,480]){
-  const page=await browser.newPage({viewport:{width,height:844},deviceScaleFactor:1});
+ for(const [width,height] of [[320,568],[360,640],[390,740],[390,844],[480,844]]){
+  const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(url);
   const images=page.locator('main img[src]:not([hidden])');
@@ -21,8 +21,11 @@ try{
    const dimensions=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:document.documentElement.clientWidth}));
    assert.ok(dimensions.scroll<=dimensions.width+1,'Horizontal overflow: '+name+' '+JSON.stringify(dimensions));
    assert.equal(await page.locator('nav button').count(),5);
-   await page.screenshot({path:dir+'/'+width+'-'+name+'.png',fullPage:true});
-   report.push({width,screen:name,images:n,decoded:true,horizontalOverflow:false});
+   if(name==='home'){
+    const fit=await page.evaluate(()=>{const m=document.querySelector('main'),nav=document.querySelector('nav'),header=document.querySelector('header');const bounds=[...m.querySelectorAll('.tile,.guide-banner,.hero,.specs')].map(el=>({name:el.className,top:el.getBoundingClientRect().top,bottom:el.getBoundingClientRect().bottom}));const mr=m.getBoundingClientRect();return {scroll:m.scrollHeight,client:m.clientHeight,doc:document.documentElement.scrollHeight,viewport:innerHeight,header:header.getBoundingClientRect().bottom,nav:nav.getBoundingClientRect().top,mainBottom:mr.bottom,bounds}});assert.ok(fit.scroll<=fit.client+1,'Home scroll: '+width+'x'+height+' '+JSON.stringify(fit));assert.ok(fit.doc<=fit.viewport+1,'Document vertical scroll');assert.ok(fit.bounds.every(b=>b.top>=fit.header-1&&b.bottom<=fit.nav+1),'Home element obscured: '+JSON.stringify(fit));
+   }
+   await page.screenshot({path:dir+'/'+width+'x'+height+'-'+name+'.png',fullPage:true});
+   report.push({width,height,screen:name,images:n,decoded:true,horizontalOverflow:false,homeNoScroll:name==='home'?true:null});
   }
   assert.equal(await page.evaluate(()=>recommendations.length),100);
   assert.equal(await page.evaluate(()=>articles.length),26);
@@ -39,7 +42,7 @@ try{
     assert.equal(await page.locator('.instruction-figure').count(),7);
     await page.locator('.instruction-figure img').first().click();
     assert.equal(await page.locator('#photoZoom').count(),1);
-    await page.screenshot({path:dir+'/'+width+'-zoom.png'});
+    await page.screenshot({path:dir+'/'+width+'x'+height+'-zoom.png'});
     await page.evaluate(()=>guideBack());
     assert.equal(await page.locator('#photoZoom').count(),0);
    }
@@ -82,6 +85,6 @@ try{
   assert.deepEqual(errors,[]);
   await page.close();
  }
- console.log('PASS: all screens at 320, 390 and 480 CSS px; image decode, search, persistent favorites, image preview and zoom');
+ console.log('PASS: all screens at five phone viewport sizes; home no-scroll and all cards visible; image decode, search, persistent favorites, image preview and zoom');
 }finally{fs.writeFileSync(dir+'/screen-report.json',JSON.stringify(report,null,2));await browser.close()}
 })().catch(e=>{console.error(e);process.exit(1)});
