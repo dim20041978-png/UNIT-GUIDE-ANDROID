@@ -26,6 +26,13 @@ jobs:
           sdkmanager --version
           test -f "$ANDROID_HOME/platforms/android-35/android.jar"
           test -x "$ANDROID_HOME/build-tools/35.0.0/aapt2"
+      - name: Embed verified-model catalog photos
+        run: |
+          python3 -m pip install --disable-pip-version-check 'PyMuPDF==1.25.5'
+          curl --fail --location --retry 3 --connect-timeout 15 --max-time 120 'https://damoatool02.cafe24.com/pdf//Uni-T/Product%20Flyer--UTi260B.pdf' -o /tmp/uti260b-flyer.pdf
+          python3 scripts/embed_catalog_photos.py /tmp/uti260b-flyer.pdf app/src/main/assets/index.html
+          python3 -c "import pathlib,re; h=pathlib.Path('app/src/main/assets/index.html').read_text(); pathlib.Path('/tmp/guide-check.js').write_text(re.search(r'<script>(.*?)</script>',h,re.S).group(1))"
+          node --check /tmp/guide-check.js
       - name: Build debug APK and lint
         run: gradle --no-daemon assembleDebug lintDebug
       - name: Name APK
